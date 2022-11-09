@@ -1,5 +1,10 @@
 let app = angular.module('appForTest', []);
 
+// root scope
+app.run(function($rootScope) {
+    $rootScope.clima = 'soleado';
+});
+
 // personal data controller
 app.controller('controllerForTest', ($scope) => {
     $scope.firstName = "Yonier";
@@ -31,4 +36,8 @@ app.controller('productController', ($scope) => {
         else 
             $scope.product.name = 'Lenovo Thinkpad';
     }
+})
+
+app.controller('climaController', function($scope) {
+    $scope.clima = 'lluvioso';
 })

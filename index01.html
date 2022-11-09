@@ -120,6 +120,12 @@
             <p>Price: {{ product.price }}</p>
             <button ng-click="changeProduct()">Cambiar producto</button>
         </div>
+
+        <div>
+            <h2>Using root scope</h2>
+            <p>Clima global: {{ clima }}</p>
+            <p ng-controller="climaController">Clima local: {{ clima }}</p>
+        </div>
     </div>
 
     <!-- app with angular sj -->
