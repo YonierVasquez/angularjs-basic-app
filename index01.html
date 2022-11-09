@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>First AngularJS App</title>
+    <style>
+        * {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        .test-list div {
+            margin-bottom: 42px;
+        }
+        input {
+            outline: none;
+        }
+        input.ng-invalid {
+            border: 1px solid red;
+        }
+        input.ng-valid {
+            border: 1px solid green;
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+</head>
+
+<body>
+    <h1>Hello world using AngularJS</h1>
+
+    <div class="test-list" ng-app="appForTest"
+        ng-init="myBrand='Lenovo'; bornYear=2002; enterprise={name: 'Opi tech', originCity: 'Bogotá'}; food=['banano','platano','cafe','aguacate','mango','manga','limon','piña']; userEmail='yon@gmail.com'"
+        ng-controller="controllerForTest">
+
+        <div>
+            <h2>Data binding using ng-model and ng-bind</h2>
+            <p>Name : <input type="text" ng-model="name"></p>
+            <p>Hello {{ name }}</p>
+        </div>
+
+        <div>
+            <h2>Initial variables binding</h2>
+            <p>My favorite brand is {{ myBrand }}</p>
+            <p>My favorite brand is <span ng-bind="myBrand"></span></p>
+        </div>
+
+        <div>
+            <h2>Controller for personal data</h2>
+            <p>First Name: <input type="text" ng-model="firstName"></p>
+            <p>Last Name: <input type="text" ng-model="lastName"></p>
+            Full Name: {{ firstName + " " + lastName }}
+        </div>
+
+        <div>
+            <h2>Dynamic background color</h2>
+            <input type="text" style="background-color: {{colorWritten}};" ng-model="colorWritten" />
+        </div>
+
+        <div>
+            <h2>Multiple initial data</h2>
+            <p>My years old is {{ 2022 - bornYear }}</p>
+        </div>
+
+        <div>
+            <h2>Using object from initial data</h2>
+            <p>Enterprise name: {{ enterprise.name }}</p>
+            <p>City: {{ enterprise.originCity }}</p>
+        </div>
+
+        <div>
+            <h2>Dollar price directive</h2>
+            <p dollar-price-directive></p>
+        </div>
+
+        <div>
+            <h2>Loop on list</h2>
+            <p>Comida cultivada en las montañas donde vivo:</p>
+            <ul>
+                <li ng-repeat="item in food">{{ item }}</li>
+            </ul>
+        </div>
+
+        <div>
+            <h2>Special tag: using angularjs directive</h2>
+            <polymer-say-hello></polymer-say-hello>
+            <polymer-say-hello></polymer-say-hello>
+        </div>
+
+        <div>
+            <h2>Detect error using ng-model y ng-show</h2>
+            <form name="myForm">
+                Email:
+                <input type="email" name="myEmail" ng-model="text">
+                <span ng-show="myForm.myEmail.$error.email">Not a valid e-mail address</span>
+                <p>User email is: {{ text }}</p>
+            </form>
+        </div>
+
+        <div>
+            <h2>Email validators</h2>
+            <form name="formEmailValidator">
+                Email:
+                <input type="email" name="myAddress" ng-model="myText" required>
+                <p>
+                    Valid: {{formEmailValidator.myAddress.$valid}}                    
+                </p>
+                <p>
+                    Sucio: {{formEmailValidator.myAddress.$dirty}}
+                </p>
+                <p>
+                    Tocado: {{formEmailValidator.myAddress.$touched}}
+                </p>
+            </form>
+        </div>
+
+        <div ng-controller="productController">
+            <h2>Function inside controller</h2>
+            <p>Product name: {{ product.name }}</p>
+            <p>Price: {{ product.price }}</p>
+            <button ng-click="changeProduct()">Cambiar producto</button>
+        </div>
+    </div>
+
+    <!-- app with angular sj -->
+    <script src="script01.js"></script>
+</body>
+
+</html>
